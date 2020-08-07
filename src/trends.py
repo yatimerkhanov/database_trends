@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 
+INPUT_DATAFRAME = '../input/database_data.csv'
+
 class Information():
 
     def __init__(self):
@@ -35,14 +37,18 @@ class Information():
 
 class ObjectOrientedSample():
 
-    def __init__(self, path):
+    def __init__(self, input_database, input_metric):
         """
 
         :param sample: data will be used for modelling and evaluation
         """
-        self.sample = pd.read_csv(path)
-        self.sample['rollup_timestamp'] = pd.to_datetime(self.sample['rollup_timestamp'])
-        self.sample = self.sample.set_index('rollup_timestamp')
+        data = pd.read_csv(INPUT_DATAFRAME)
+        data['rollup_timestamp'] = pd.to_datetime(data['rollup_timestamp'])
+        data = data.set_index('rollup_timestamp')
+
+        self.sample = data[data['database'] == input_database][[input_metric]]
+        self.sample.rename(columns={input_metric: "value"}, inplace=True)
+        self.sample.index = pd.to_datetime(sample.index)
 
         print("ObjectOrientedSample object created")
 
