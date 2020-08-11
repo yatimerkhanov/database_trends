@@ -4,4 +4,5 @@ matplotlib
 streamlit
 statsmodels
 plotly
+pystan
 fbprophet
