@@ -5,6 +5,8 @@ services:
     command: "streamlit run src/app.py"
     ports:
       - "8501:8501"
+    environment:
+      - INPUT_DATAFRAME=/usr/src/app/input/database_data.csv
     volumes:
       - "./src:/usr/src/app/src"
       - "./input:/usr/src/app/input"
