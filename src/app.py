@@ -45,8 +45,8 @@ if st.sidebar.button("Graph for raw data"):
     st.title("Graph for raw data:")
     sample.raw_data_plot()
 days = st.sidebar.slider('Rolling window size in days for averaging', 1, 10, 1)
-if st.sidebar.button("Graph with moving avetage"):
-    st.title("Graph with moving avetage:")
+if st.sidebar.button("Graph with moving average"):
+    st.title("Graph with moving average:")
     sample.moving_average_plot(days)
 if st.sidebar.button("Graph for decomposition"):
     st.title("Graph for decomposition:")
