@@ -57,11 +57,10 @@ if st.sidebar.button("Build model and predict"):
     sample.split_data_by_period(period)
     sample.machine_learning()
     sample.make_compasion()
-    if st.checkbox('Show prediction data'):
-        st.subheader('Raw data')
-        st.write(sample.forecast)
     sample.show_forecast()
     if period < 0:
         st.write('Calculated errors for this model:')
         for err_name, err_value in sample.prophet.calculate_forecast_errors(sample.cmp_df, sample.period_past).items():
             st.write(err_name, err_value)
+    st.subheader('Raw data')
+    st.write(sample.forecast)
